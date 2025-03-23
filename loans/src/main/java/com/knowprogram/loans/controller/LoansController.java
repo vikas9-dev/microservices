@@ -10,6 +10,7 @@ import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.Pattern;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,7 +23,7 @@ import org.springframework.web.bind.annotation.*;
  * @author Vikas
  * @since 1.0
  */
-@Schema(name = "CRUD REST APIs for Loans", description = "CRUD REST APIs for Loans to create, update, delete and " +
+@Tag(name = "CRUD REST APIs for Loans", description = "CRUD REST APIs for Loans to create, update, delete and " +
         "fetch loan details")
 @RestController
 @RequestMapping("/api")
