@@ -1,0 +1,15 @@
+package com.knowprogram.loans.mapper;
+
+import com.knowprogram.loans.dto.LoansDto;
+import com.knowprogram.loans.entity.Loans;
+
+public class LoansMapper {
+    public static LoansDto mapToLoansDto(Loans loans, LoansDto loansDto) {
+        loansDto.setMobileNumber(loans.getMobileNumber());
+        loansDto.setLoanNumber(loans.getLoanNumber());
+        loansDto.setLoanType(loans.getLoanType());
+        loansDto.setTotalLoan(loans.getTotalLoan());
+        loansDto.setAmountPaid(loans.getAmountPaid());
+        loansDto.setOutstandingAmount(loans.getOutstandingAmount());
+    }
+}

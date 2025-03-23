@@ -714,7 +714,7 @@ Explaining your approach as a structured flow will impress the interviewer and s
 These annotations and classes are fundamental to developing **Spring Boot Microservices**. Keep them handy for quick reference!
 
 ---
-## Loans Microservices
+## Loans Microservice
 
 Schema:-
 ```sql
