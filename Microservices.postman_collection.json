@@ -1,0 +1,1520 @@
+{
+	"info": {
+		"_postman_id": "3820a902-1305-43a0-a765-f212e7f22015",
+		"name": "Microservices",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "21625099"
+	},
+	"item": [
+		{
+			"name": "Accounts",
+			"item": [
+				{
+					"name": "Create Customer",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Successful POST request\", function () {",
+									"    pm.expect(pm.response.code).to.be.oneOf([200, 201]);",
+									"});",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Hari Om\",\n    \"email\": \"test1@gmail.com\",\n    \"mobileNumber\": \"7488014862\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{accounts}}/create",
+							"host": [
+								"{{accounts}}"
+							],
+							"path": [
+								"create"
+							]
+						},
+						"description": "This is a POST request, submitting data to an API via the request body. This request submits JSON data, and the data is reflected in the response.\n\nA successful POST request typically returns a `200 OK` or `201 Created` response code."
+					},
+					"response": [
+						{
+							"name": "Post data",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\": \"Manmohan Singh\",\n    \"email\": \"test@gmail.com\",\n    \"mobileNumber\": \"7488014862\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/create",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"create"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 19 Mar 2025 02:43:17 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"statusCode\": \"201\",\n    \"statusMsg\": \"Account created successfully\"\n}"
+						},
+						{
+							"name": "Validation Error",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\": \"M\",\n    \"email\": \"test@gmail.com\",\n    \"mobileNumber\": \"748801486\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/create",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"create"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 19 Mar 2025 04:14:36 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"mobileNumber\": \"Mobile Number must be 10 digits\",\n    \"name\": \"The length of the customer name should be between 5 and 30 characters\"\n}"
+						},
+						{
+							"name": "Validation",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\": \"M\",\n    \"email\": \"testgmail.com\",\n    \"mobileNumber\": \"748801486\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/create",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"create"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 19 Mar 2025 04:15:14 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"mobileNumber\": \"Mobile Number must be 10 digits\",\n    \"name\": \"The length of the customer name should be between 5 and 30 characters\",\n    \"email\": \"Invalid email address\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Get Customer",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{accounts}}/fetch?mobileNumber=7488014862",
+							"host": [
+								"{{accounts}}"
+							],
+							"path": [
+								"fetch"
+							],
+							"query": [
+								{
+									"key": "mobileNumber",
+									"value": "7488014862"
+								}
+							]
+						},
+						"description": "This is a GET request and it is used to \"get\" data from an endpoint. There is no request body for a GET request, but you can use query parameters to help specify the resource you want data on (e.g., in this request, we have `id=1`).\n\nA successful GET response will have a `200 OK` status, and should include some kind of response body - for example, HTML web content or JSON data."
+					},
+					"response": [
+						{
+							"name": "Get data",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/fetch?mobileNumber=7488014862",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"fetch"
+									],
+									"query": [
+										{
+											"key": "mobileNumber",
+											"value": "7488014862"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 19 Mar 2025 02:44:50 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"name\": \"Manmohan Singh\",\n    \"email\": \"test@gmail.com\",\n    \"mobileNumber\": \"7488014862\",\n    \"accountDTO\": {\n        \"accountNumber\": 817047419,\n        \"accountType\": \"Savings\",\n        \"branchAddress\": \"123 Main Street, New York\"\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Update based on accountNumber",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Successful PUT request\", function () {",
+									"    pm.expect(pm.response.code).to.be.oneOf([200, 201, 204]);",
+									"});",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Hari Om\",\n    \"email\": \"test2@gmail.com\",\n    \"mobileNumber\": \"7488014863\",\n    \"accountDTO\": {\n        \"accountNumber\": 232669939,\n        \"accountType\": \"Current\",\n        \"branchAddress\": \"123 Main Street, New York\"\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{accounts}}/update",
+							"host": [
+								"{{accounts}}"
+							],
+							"path": [
+								"update"
+							]
+						},
+						"description": "This is a PUT request and it is used to overwrite an existing piece of data. For instance, after you create an entity with a POST request, you may want to modify that later. You can do that using a PUT request. You typically identify the entity being updated by including an identifier in the URL (eg. `id=1`).\n\nA successful PUT request typically returns a `200 OK`, `201 Created`, or `204 No Content` response code."
+					},
+					"response": [
+						{
+							"name": "Update data",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\": \"Hari Om\",\n    \"email\": \"test2@gmail.com\",\n    \"mobileNumber\": \"7488014863\",\n    \"accountDTO\": {\n        \"accountNumber\": 555305288,\n        \"accountType\": \"Current\",\n        \"branchAddress\": \"123 Main Street, New York\"\n    }\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/update",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"update"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 19 Mar 2025 03:12:18 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"statusCode\": \"200\",\n    \"statusMsg\": \"Request processed successfully\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Delete data",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Successful DELETE request\", function () {",
+									"    pm.expect(pm.response.code).to.be.oneOf([200, 202, 204]);",
+									"});",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{accounts}}/delete?mobileNumber=7488014861",
+							"host": [
+								"{{accounts}}"
+							],
+							"path": [
+								"delete"
+							],
+							"query": [
+								{
+									"key": "mobileNumber",
+									"value": "7488014861"
+								}
+							]
+						},
+						"description": "This is a DELETE request, and it is used to delete data that was previously created via a POST request. You typically identify the entity being updated by including an identifier in the URL (eg. `id=1`).\n\nA successful DELETE request typically returns a `200 OK`, `202 Accepted`, or `204 No Content` response code."
+					},
+					"response": [
+						{
+							"name": "Delete data",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/delete?mobileNumber=7488014861",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"delete"
+									],
+									"query": [
+										{
+											"key": "mobileNumber",
+											"value": "7488014861"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 19 Mar 2025 03:22:25 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"statusCode\": \"200\",\n    \"statusMsg\": \"Request processed successfully\"\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Loans",
+			"item": [
+				{
+					"name": "Post data",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Successful POST request\", function () {",
+									"    pm.expect(pm.response.code).to.be.oneOf([200, 201]);",
+									"});",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{loans}}/create?mobileNumber=7488014862",
+							"host": [
+								"{{loans}}"
+							],
+							"path": [
+								"create"
+							],
+							"query": [
+								{
+									"key": "mobileNumber",
+									"value": "7488014862"
+								}
+							]
+						},
+						"description": "This is a POST request, submitting data to an API via the request body. This request submits JSON data, and the data is reflected in the response.\n\nA successful POST request typically returns a `200 OK` or `201 Created` response code."
+					},
+					"response": [
+						{
+							"name": "Post data",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{loans}}/create?mobileNumber=7488014862",
+									"host": [
+										"{{loans}}"
+									],
+									"path": [
+										"create"
+									],
+									"query": [
+										{
+											"key": "mobileNumber",
+											"value": "7488014862"
+										}
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 23 Mar 2025 06:43:34 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"statusCode\": \"201\",\n    \"statusMsg\": \"Loan created successfully\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Get data",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{loans}}/fetch?mobileNumber=7488014862",
+							"host": [
+								"{{loans}}"
+							],
+							"path": [
+								"fetch"
+							],
+							"query": [
+								{
+									"key": "mobileNumber",
+									"value": "7488014862"
+								}
+							]
+						},
+						"description": "This is a GET request and it is used to \"get\" data from an endpoint. There is no request body for a GET request, but you can use query parameters to help specify the resource you want data on (e.g., in this request, we have `id=1`).\n\nA successful GET response will have a `200 OK` status, and should include some kind of response body - for example, HTML web content or JSON data."
+					},
+					"response": [
+						{
+							"name": "Get data",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{loans}}/fetch?mobileNumber=7488014862",
+									"host": [
+										"{{loans}}"
+									],
+									"path": [
+										"fetch"
+									],
+									"query": [
+										{
+											"key": "mobileNumber",
+											"value": "7488014862"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 23 Mar 2025 06:43:36 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"mobileNumber\": \"7488014862\",\n    \"loanNumber\": \"288330710413\",\n    \"loanType\": \"Home Loan\",\n    \"totalLoan\": 100000,\n    \"amountPaid\": 0,\n    \"outstandingAmount\": 100000\n}"
+						},
+						{
+							"name": "Exception",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{loans}}/fetch?mobileNumber=7488014861",
+									"host": [
+										"{{loans}}"
+									],
+									"path": [
+										"fetch"
+									],
+									"query": [
+										{
+											"key": "mobileNumber",
+											"value": "7488014861"
+										}
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 23 Mar 2025 06:50:44 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"apiPath\": \"uri=/api/fetch\",\n    \"errorCode\": \"NOT_FOUND\",\n    \"errorMessage\": \"Loan not found with given input data mobileNumber : '7488014861'\",\n    \"errorTime\": \"2025-03-23T12:20:44.8916943\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Update data",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Successful PUT request\", function () {",
+									"    pm.expect(pm.response.code).to.be.oneOf([200, 201, 204]);",
+									"});",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"mobileNumber\": \"7488014862\",\n    \"loanNumber\": \"288330710414\",\n    \"loanType\": \"Personal Loan\",\n    \"totalLoan\": 500000,\n    \"amountPaid\": 200000,\n    \"outstandingAmount\": 300000\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{loans}}/update?mobileNumber=7488014862",
+							"host": [
+								"{{loans}}"
+							],
+							"path": [
+								"update"
+							],
+							"query": [
+								{
+									"key": "mobileNumber",
+									"value": "7488014862"
+								}
+							]
+						},
+						"description": "This is a PUT request and it is used to overwrite an existing piece of data. For instance, after you create an entity with a POST request, you may want to modify that later. You can do that using a PUT request. You typically identify the entity being updated by including an identifier in the URL (eg. `id=1`).\n\nA successful PUT request typically returns a `200 OK`, `201 Created`, or `204 No Content` response code."
+					},
+					"response": [
+						{
+							"name": "Update data",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"mobileNumber\": \"7488014862\",\n    \"loanNumber\": \"288330710414\",\n    \"loanType\": \"Personal Loan\",\n    \"totalLoan\": 500000,\n    \"amountPaid\": 200000,\n    \"outstandingAmount\": 300000\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{loans}}/update?mobileNumber=7488014862",
+									"host": [
+										"{{loans}}"
+									],
+									"path": [
+										"update"
+									],
+									"query": [
+										{
+											"key": "mobileNumber",
+											"value": "7488014862"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 23 Mar 2025 06:44:13 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"statusCode\": \"200\",\n    \"statusMsg\": \"Request processed successfully\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Delete data",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Successful DELETE request\", function () {",
+									"    pm.expect(pm.response.code).to.be.oneOf([200, 202, 204]);",
+									"});",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{loans}}/delete?mobileNumber=7488014862",
+							"host": [
+								"{{loans}}"
+							],
+							"path": [
+								"delete"
+							],
+							"query": [
+								{
+									"key": "mobileNumber",
+									"value": "7488014862"
+								}
+							]
+						},
+						"description": "This is a DELETE request, and it is used to delete data that was previously created via a POST request. You typically identify the entity being updated by including an identifier in the URL (eg. `id=1`).\n\nA successful DELETE request typically returns a `200 OK`, `202 Accepted`, or `204 No Content` response code."
+					},
+					"response": [
+						{
+							"name": "Delete data",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{loans}}/delete?mobileNumber=7488014862",
+									"host": [
+										"{{loans}}"
+									],
+									"path": [
+										"delete"
+									],
+									"query": [
+										{
+											"key": "mobileNumber",
+											"value": "7488014862"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 23 Mar 2025 06:45:01 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"statusCode\": \"200\",\n    \"statusMsg\": \"Request processed successfully\"\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Cards",
+			"item": [
+				{
+					"name": "Post data",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Successful POST request\", function () {",
+									"    pm.expect(pm.response.code).to.be.oneOf([200, 201]);",
+									"});",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\": \"Add your name in the body\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{cards}}/create?mobileNumber=7488014862",
+							"host": [
+								"{{cards}}"
+							],
+							"path": [
+								"create"
+							],
+							"query": [
+								{
+									"key": "mobileNumber",
+									"value": "7488014862"
+								}
+							]
+						},
+						"description": "This is a POST request, submitting data to an API via the request body. This request submits JSON data, and the data is reflected in the response.\n\nA successful POST request typically returns a `200 OK` or `201 Created` response code."
+					},
+					"response": [
+						{
+							"name": "Post data",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"name\": \"Add your name in the body\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{cards}}/create?mobileNumber=7488014862",
+									"host": [
+										"{{cards}}"
+									],
+									"path": [
+										"create"
+									],
+									"query": [
+										{
+											"key": "mobileNumber",
+											"value": "7488014862"
+										}
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 23 Mar 2025 07:53:54 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"statusCode\": \"201\",\n    \"statusMsg\": \"Card created successfully\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Get data",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{cards}}/fetch?mobileNumber=7488014862",
+							"host": [
+								"{{cards}}"
+							],
+							"path": [
+								"fetch"
+							],
+							"query": [
+								{
+									"key": "mobileNumber",
+									"value": "7488014862"
+								}
+							]
+						},
+						"description": "This is a GET request and it is used to \"get\" data from an endpoint. There is no request body for a GET request, but you can use query parameters to help specify the resource you want data on (e.g., in this request, we have `id=1`).\n\nA successful GET response will have a `200 OK` status, and should include some kind of response body - for example, HTML web content or JSON data."
+					},
+					"response": [
+						{
+							"name": "Get data",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{cards}}/fetch?mobileNumber=7488014862",
+									"host": [
+										"{{cards}}"
+									],
+									"path": [
+										"fetch"
+									],
+									"query": [
+										{
+											"key": "mobileNumber",
+											"value": "7488014862"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 23 Mar 2025 07:54:18 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"mobileNumber\": \"7488014862\",\n    \"cardNumber\": \"100702920355\",\n    \"cardType\": \"Credit Card\",\n    \"totalLimit\": 100000,\n    \"amountUsed\": 0,\n    \"availableAmount\": 100000\n}"
+						},
+						{
+							"name": "Exception",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{cards}}/fetch?mobileNumber=7488014861",
+									"host": [
+										"{{cards}}"
+									],
+									"path": [
+										"fetch"
+									],
+									"query": [
+										{
+											"key": "mobileNumber",
+											"value": "7488014861"
+										}
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 23 Mar 2025 07:54:41 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"apiPath\": \"uri=/api/fetch\",\n    \"errorCode\": \"NOT_FOUND\",\n    \"errorMessage\": \"Card not found with given input data mobileNumber : '7488014861'\",\n    \"errorTime\": \"2025-03-23T13:24:41.7213695\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Update data",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Successful PUT request\", function () {",
+									"    pm.expect(pm.response.code).to.be.oneOf([200, 201, 204]);",
+									"});",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"mobileNumber\": \"7488014862\",\n    \"cardNumber\": \"10070292035\",\n    \"cardType\": \"Platinum Credit Card\",\n    \"totalLimit\": 200000,\n    \"amountUsed\": 50000,\n    \"availableAmount\": 150000\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{cards}}/update",
+							"host": [
+								"{{cards}}"
+							],
+							"path": [
+								"update"
+							]
+						},
+						"description": "This is a PUT request and it is used to overwrite an existing piece of data. For instance, after you create an entity with a POST request, you may want to modify that later. You can do that using a PUT request. You typically identify the entity being updated by including an identifier in the URL (eg. `id=1`).\n\nA successful PUT request typically returns a `200 OK`, `201 Created`, or `204 No Content` response code."
+					},
+					"response": [
+						{
+							"name": "Update data",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"mobileNumber\": \"7488014862\",\n    \"cardNumber\": \"100702920355\",\n    \"cardType\": \"Platinum Credit Card\",\n    \"totalLimit\": 200000,\n    \"amountUsed\": 50000,\n    \"availableAmount\": 150000\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{cards}}/update",
+									"host": [
+										"{{cards}}"
+									],
+									"path": [
+										"update"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 23 Mar 2025 07:56:58 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"statusCode\": \"200\",\n    \"statusMsg\": \"Request processed successfully\"\n}"
+						},
+						{
+							"name": "Exception",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"mobileNumber\": \"7488014862\",\n    \"cardNumber\": \"100702920356\",\n    \"cardType\": \"Platinum Credit Card\",\n    \"totalLimit\": 200000,\n    \"amountUsed\": 50000,\n    \"availableAmount\": 150000\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{cards}}/update",
+									"host": [
+										"{{cards}}"
+									],
+									"path": [
+										"update"
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 23 Mar 2025 07:57:18 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"apiPath\": \"uri=/api/update\",\n    \"errorCode\": \"NOT_FOUND\",\n    \"errorMessage\": \"Card not found with given input data CardNumber : '100702920356'\",\n    \"errorTime\": \"2025-03-23T13:27:18.0504113\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Delete data",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Successful DELETE request\", function () {",
+									"    pm.expect(pm.response.code).to.be.oneOf([200, 202, 204]);",
+									"});",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{cards}}/delete?mobileNumber=7488014862",
+							"host": [
+								"{{cards}}"
+							],
+							"path": [
+								"delete"
+							],
+							"query": [
+								{
+									"key": "mobileNumber",
+									"value": "7488014862"
+								}
+							]
+						},
+						"description": "This is a DELETE request, and it is used to delete data that was previously created via a POST request. You typically identify the entity being updated by including an identifier in the URL (eg. `id=1`).\n\nA successful DELETE request typically returns a `200 OK`, `202 Accepted`, or `204 No Content` response code."
+					},
+					"response": [
+						{
+							"name": "Delete data",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{cards}}/delete?mobileNumber=7488014862",
+									"host": [
+										"{{cards}}"
+									],
+									"path": [
+										"delete"
+									],
+									"query": [
+										{
+											"key": "mobileNumber",
+											"value": "7488014862"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 23 Mar 2025 07:57:48 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"statusCode\": \"200\",\n    \"statusMsg\": \"Request processed successfully\"\n}"
+						},
+						{
+							"name": "Exception",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{cards}}/delete?mobileNumber=7488014862",
+									"host": [
+										"{{cards}}"
+									],
+									"path": [
+										"delete"
+									],
+									"query": [
+										{
+											"key": "mobileNumber",
+											"value": "7488014862"
+										}
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 23 Mar 2025 07:57:55 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"apiPath\": \"uri=/api/delete\",\n    \"errorCode\": \"NOT_FOUND\",\n    \"errorMessage\": \"Card not found with given input data mobileNumber : '7488014862'\",\n    \"errorTime\": \"2025-03-23T13:27:55.9929483\"\n}"
+						}
+					]
+				}
+			]
+		}
+	]
+}
