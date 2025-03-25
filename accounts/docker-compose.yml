@@ -1,0 +1,37 @@
+services:
+    accounts:
+        image: vikas9dev/accounts:s4
+        ports:
+            - "8080:8080"
+        deploy:
+            resources:
+                limits:
+                    memory: 700M
+        networks:
+            - PeopleBank
+
+    loans:
+        image: vikas9dev/loans:s4
+        ports:
+            - "8090:8090"
+        deploy:
+            resources:
+                limits:
+                    memory: 700M
+        networks:
+            - PeopleBank
+
+    cards:
+        image: vikas9dev/cards:s4
+        ports:
+            - "9000:9000"
+        deploy:
+            resources:
+                limits:
+                    memory: 700M
+        networks:
+            - PeopleBank
+
+networks:
+    PeopleBank:
+        driver: bridge
