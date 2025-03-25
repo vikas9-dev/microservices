@@ -220,9 +220,9 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{url}}/fetch?mobileNumber=7488014862",
+							"raw": "{{accounts}}/fetch?mobileNumber=7488014862",
 							"host": [
-								"{{url}}"
+								"{{accounts}}"
 							],
 							"path": [
 								"fetch"
@@ -959,6 +959,113 @@
 			"name": "Cards",
 			"item": [
 				{
+					"name": "Post data",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Successful POST request\", function () {",
+									"    pm.expect(pm.response.code).to.be.oneOf([200, 201]);",
+									"});",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\": \"Add your name in the body\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{cards}}/create?mobileNumber=7488014862",
+							"host": [
+								"{{cards}}"
+							],
+							"path": [
+								"create"
+							],
+							"query": [
+								{
+									"key": "mobileNumber",
+									"value": "7488014862"
+								}
+							]
+						},
+						"description": "This is a POST request, submitting data to an API via the request body. This request submits JSON data, and the data is reflected in the response.\n\nA successful POST request typically returns a `200 OK` or `201 Created` response code."
+					},
+					"response": [
+						{
+							"name": "Post data",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"name\": \"Add your name in the body\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{cards}}/create?mobileNumber=7488014862",
+									"host": [
+										"{{cards}}"
+									],
+									"path": [
+										"create"
+									],
+									"query": [
+										{
+											"key": "mobileNumber",
+											"value": "7488014862"
+										}
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 23 Mar 2025 07:53:54 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"statusCode\": \"201\",\n    \"statusMsg\": \"Card created successfully\"\n}"
+						}
+					]
+				},
+				{
 					"name": "Get data",
 					"event": [
 						{
@@ -1092,113 +1199,6 @@
 							],
 							"cookie": [],
 							"body": "{\n    \"apiPath\": \"uri=/api/fetch\",\n    \"errorCode\": \"NOT_FOUND\",\n    \"errorMessage\": \"Card not found with given input data mobileNumber : '7488014861'\",\n    \"errorTime\": \"2025-03-23T13:24:41.7213695\"\n}"
-						}
-					]
-				},
-				{
-					"name": "Post data",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"exec": [
-									"pm.test(\"Successful POST request\", function () {",
-									"    pm.expect(pm.response.code).to.be.oneOf([200, 201]);",
-									"});",
-									""
-								],
-								"type": "text/javascript",
-								"packages": {}
-							}
-						}
-					],
-					"request": {
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n\t\"name\": \"Add your name in the body\"\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "{{cards}}/create?mobileNumber=7488014862",
-							"host": [
-								"{{cards}}"
-							],
-							"path": [
-								"create"
-							],
-							"query": [
-								{
-									"key": "mobileNumber",
-									"value": "7488014862"
-								}
-							]
-						},
-						"description": "This is a POST request, submitting data to an API via the request body. This request submits JSON data, and the data is reflected in the response.\n\nA successful POST request typically returns a `200 OK` or `201 Created` response code."
-					},
-					"response": [
-						{
-							"name": "Post data",
-							"originalRequest": {
-								"method": "POST",
-								"header": [],
-								"body": {
-									"mode": "raw",
-									"raw": "{\n\t\"name\": \"Add your name in the body\"\n}",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": {
-									"raw": "{{cards}}/create?mobileNumber=7488014862",
-									"host": [
-										"{{cards}}"
-									],
-									"path": [
-										"create"
-									],
-									"query": [
-										{
-											"key": "mobileNumber",
-											"value": "7488014862"
-										}
-									]
-								}
-							},
-							"status": "Created",
-							"code": 201,
-							"_postman_previewlanguage": "json",
-							"header": [
-								{
-									"key": "Content-Type",
-									"value": "application/json"
-								},
-								{
-									"key": "Transfer-Encoding",
-									"value": "chunked"
-								},
-								{
-									"key": "Date",
-									"value": "Sun, 23 Mar 2025 07:53:54 GMT"
-								},
-								{
-									"key": "Keep-Alive",
-									"value": "timeout=60"
-								},
-								{
-									"key": "Connection",
-									"value": "keep-alive"
-								}
-							],
-							"cookie": [],
-							"body": "{\n    \"statusCode\": \"201\",\n    \"statusMsg\": \"Card created successfully\"\n}"
 						}
 					]
 				},
