@@ -1,6 +1,7 @@
 package com.knowprogram.accounts.controller;
 
 import com.knowprogram.accounts.constants.AccountConstants;
+import com.knowprogram.accounts.dto.AccountsContactDto;
 import com.knowprogram.accounts.dto.CustomerDTO;
 import com.knowprogram.accounts.dto.ErrorResponseDTO;
 import com.knowprogram.accounts.dto.ResponseDTO;
@@ -14,6 +15,9 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.Pattern;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.context.properties.EnableConfigurationProperties;
+import org.springframework.core.env.Environment;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
@@ -24,15 +28,25 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping("/api")
 @Validated
+@EnableConfigurationProperties(value = {AccountsContactDto.class})
 public class AccountsController {
 
     @Autowired
     private IAccountService accountService;
 
+    @Value("${build.version}")
+    private String buildVersion;
+
+    @Autowired
+    private Environment env; // Import from Spring Boot (not from Hibernate)
+
+    @Autowired
+    private AccountsContactDto contactDto;
+
     @Operation(summary = "Create Account REST API", description = "REST API to create new Customer & Account")
-    @ApiResponses({
-    @ApiResponse(responseCode = "201", description = "HTTP Status 201 - Created"), @ApiResponse(responseCode = "500", description = "HTTP Status 500 - Internal Server Error", content =
-    @Content(schema = @Schema(implementation = ErrorResponseDTO.class)))})
+    @ApiResponses({@ApiResponse(responseCode = "201", description = "HTTP Status 201 - Created"),
+            @ApiResponse(responseCode = "500", description = "HTTP Status 500 - Internal Server Error", content =
+            @Content(schema = @Schema(implementation = ErrorResponseDTO.class)))})
     @PostMapping("/create")
     public ResponseEntity<ResponseDTO> createAccount(@Valid @RequestBody CustomerDTO customerDTO) {
         accountService.createAccount(customerDTO);
@@ -41,9 +55,9 @@ public class AccountsController {
     }
 
     @Operation(summary = "Fetch Account REST API", description = "REST API to fetch account details")
-    @ApiResponses({
-    @ApiResponse(responseCode = "200", description = "HTTP Status 200 - OK"), @ApiResponse(responseCode = "500", description = "HTTP Status 500 - Internal Server Error", content =
-    @Content(schema = @Schema(implementation = ErrorResponseDTO.class)))})
+    @ApiResponses({@ApiResponse(responseCode = "200", description = "HTTP Status 200 - OK"),
+            @ApiResponse(responseCode = "500", description = "HTTP Status 500 - Internal Server Error", content =
+            @Content(schema = @Schema(implementation = ErrorResponseDTO.class)))})
     @GetMapping("/fetch")
     public ResponseEntity<CustomerDTO> fetchAccountDetails(@RequestParam @Pattern(regexp = "(^$|[0-9]{10})", message
             = "Mobile Number must be 10 digits") String mobileNumber) {
@@ -75,5 +89,26 @@ public class AccountsController {
                 AccountConstants.MESSAGE_200)) :
                 ResponseEntity.status(HttpStatus.EXPECTATION_FAILED).body(new ResponseDTO(AccountConstants.STATUS_500
                         , AccountConstants.MESSAGE_417_DELETE));
+    }
+
+    @Operation(summary = "Get Build Version REST API", description = "REST API to get build version")
+    @ApiResponses({@ApiResponse(responseCode = "200", description = "HTTP Status 200 - OK")})
+    @GetMapping("/build-info")
+    public ResponseEntity<String> getBuildVersion() {
+        return ResponseEntity.ok().body(buildVersion);
+    }
+
+    @Operation(summary = "Get Java Version REST API", description = "REST API to get java version")
+    @ApiResponses({@ApiResponse(responseCode = "200", description = "HTTP Status 200 - OK")})
+    @GetMapping("/java-version")
+    public ResponseEntity<String> getJavaVersion() {
+        return ResponseEntity.ok().body(env.getProperty("JAVA_HOME"));
+    }
+
+    @Operation(summary = "Get Contact Details REST API", description = "REST API to get contact details")
+    @ApiResponses({@ApiResponse(responseCode = "200", description = "HTTP Status 200 - OK")})
+    @GetMapping("/contact-info")
+    public ResponseEntity<AccountsContactDto> getContactDetails() {
+        return ResponseEntity.ok().body(contactDto);
     }
 }

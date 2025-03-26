@@ -1,0 +1,16 @@
+#spring:
+#  config:
+#    active:
+#      on-profile: qa
+
+build:
+  version: "2.0"
+
+accounts:
+  message: "Accounts Microservice - QA"
+  contactDetails:
+    name: "Accounts Microservice - Developer"
+    email: "0V7ZD@example.com"
+  onCallSupport:
+    - (555) 555-5555
+    - (555) 555-5556

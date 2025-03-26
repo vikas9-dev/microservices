@@ -107,7 +107,7 @@
                 <version>3.4.5</version>
                 <configuration>
                     <to>
-                        <image>vikas9dev/${project.artifactId}:s4</image>
+                        <image>vikas9dev/${project.artifactId}:s6</image>
                     </to>
                 </configuration>
             </plugin>

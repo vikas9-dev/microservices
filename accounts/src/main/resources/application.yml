@@ -15,3 +15,20 @@ spring:
     hibernate:
       ddl-auto: update
     show-sql: true
+  profiles:
+    active: prod
+  config:
+    import:
+      - "application_${spring.profiles.active}.yml"
+
+build:
+  version: "3.0"
+
+accounts:
+  message: "Accounts Microservice - Local"
+  contactDetails:
+    name: "Accounts Microservice - Developer"
+    email: "0V7ZD@example.com"
+  onCallSupport:
+    - (555) 555-5555
+    - (555) 555-5556
