@@ -19,7 +19,7 @@ spring:
     active: prod
   config:
     import:
-      - "application_${spring.profiles.active}.yml"
+      - "application-${spring.profiles.active}.yml"
 
 build:
   version: "3.0"
