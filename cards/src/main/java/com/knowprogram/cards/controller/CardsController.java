@@ -102,14 +102,14 @@ public class CardsController {
 
     @Operation(summary = "Get Contact Details REST API", description = "REST API to get contact details")
     @ApiResponses({@ApiResponse(responseCode = "200", description = "HTTP Status OK")})
-    @GetMapping("/build-version")
+    @GetMapping("/build-info")
     public ResponseEntity<String> getBuildVersion() {
         return ResponseEntity.ok(buildVersion);
     }
 
     @Operation(summary = "Get Contact Details REST API", description = "REST API to get contact details")
     @ApiResponses({@ApiResponse(responseCode = "200", description = "HTTP Status OK")})
-    @GetMapping("/contact-details")
+    @GetMapping("/contact-info")
     public ResponseEntity<ContactDto> getContactDetails() {
         return ResponseEntity.ok(contactDto);
     }

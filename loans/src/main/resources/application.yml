@@ -15,4 +15,21 @@ spring:
     hibernate:
       ddl-auto: update
     show-sql: true
+  profiles:
+    active: qa
+  config:
+    import:
+      optionals:
+        - "application-${spring.profiles.active}.yml"
 
+build:
+  version: "3.0"
+
+loans:
+  message: "Welcome to PeopleBank loans related local APIs "
+  contactDetails:
+    name: "Know Program Lech - Developer"
+    email: "dragos@peoplebank.com"
+  onCallSupport:
+    - (412) 419-3491
+    - (915) 382-1932

@@ -1,6 +1,7 @@
 package com.knowprogram.loans.controller;
 
 import com.knowprogram.loans.constants.LoansConstants;
+import com.knowprogram.loans.dto.ContactDto;
 import com.knowprogram.loans.dto.ErrorResponseDto;
 import com.knowprogram.loans.dto.LoansDto;
 import com.knowprogram.loans.dto.ResponseDto;
@@ -14,6 +15,9 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.Pattern;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.context.properties.EnableConfigurationProperties;
+import org.springframework.core.env.Environment;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
@@ -28,10 +32,20 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping("/api")
 @Validated
+@EnableConfigurationProperties(value = {ContactDto.class})
 public class LoansController {
 
     @Autowired
     private LoansService loansService;
+
+    @Value("${build.version}")
+    private String buildVersion;
+
+    @Autowired
+    private ContactDto contactDto;
+
+    @Autowired
+    private Environment environment;
 
     @Operation(summary = "Create Loan REST API", description = "REST API to create new Loan")
     @ApiResponses({@ApiResponse(responseCode = "201", description = "Loan created successfully"),
@@ -81,6 +95,27 @@ public class LoansController {
                 LoansConstants.MESSAGE_200), HttpStatus.OK) :
                 new ResponseEntity<>(new ResponseDto(LoansConstants.STATUS_417, LoansConstants.MESSAGE_417_DELETE),
                         HttpStatus.EXPECTATION_FAILED);
+    }
+
+    @Operation(summary = "Get Contact Details REST API", description = "REST API to get contact details")
+    @ApiResponses({@ApiResponse(responseCode = "200", description = "HTTP Status OK")})
+    @GetMapping("/build-info")
+    public ResponseEntity<String> getBuildVersion() {
+        return ResponseEntity.ok(buildVersion);
+    }
+
+    @Operation(summary = "Get Contact Details REST API", description = "REST API to get contact details")
+    @ApiResponses({@ApiResponse(responseCode = "200", description = "HTTP Status OK")})
+    @GetMapping("/contact-info")
+    public ResponseEntity<ContactDto> getContactDetails() {
+        return ResponseEntity.ok(contactDto);
+    }
+
+    @Operation(summary = "Get Java Version REST API", description = "REST API to get java version")
+    @ApiResponses({@ApiResponse(responseCode = "200", description = "HTTP Status OK")})
+    @GetMapping("/java-version")
+    public ResponseEntity<String> getJavaVersion() {
+        return ResponseEntity.ok().body(environment.getProperty("JAVA_HOME"));
     }
 
 }
