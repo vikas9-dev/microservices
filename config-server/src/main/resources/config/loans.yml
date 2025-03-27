@@ -1,7 +1,7 @@
 build:
   version: "3.0"
 
-cards:
+loans:
   message: "Welcome to PeopleBank loans related local APIs "
   contactDetails:
     name: "Know Program Lech - Developer"

@@ -1,7 +1,7 @@
 build:
   version: "1.0"
 
-cards:
+loans:
   message: "Welcome to PeopleBank loans related prod APIs "
   contactDetails:
     name: "William - Product Owner"

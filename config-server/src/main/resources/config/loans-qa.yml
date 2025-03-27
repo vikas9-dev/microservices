@@ -1,7 +1,7 @@
 build:
   version: "2.0"
 
-cards:
+loans:
   message: "Welcome to PeopleBank loans related QA APIs "
   contactDetails:
     name: "Rocco Jerry - QA Lead"
