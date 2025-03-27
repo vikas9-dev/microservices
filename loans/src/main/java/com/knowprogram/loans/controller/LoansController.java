@@ -2,6 +2,7 @@ package com.knowprogram.loans.controller;
 
 import com.knowprogram.loans.constants.LoansConstants;
 import com.knowprogram.loans.dto.ContactDto;
+import com.knowprogram.loans.dto.ContactDto;
 import com.knowprogram.loans.dto.ErrorResponseDto;
 import com.knowprogram.loans.dto.LoansDto;
 import com.knowprogram.loans.dto.ResponseDto;
@@ -16,6 +17,7 @@ import jakarta.validation.Valid;
 import jakarta.validation.constraints.Pattern;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.core.env.Environment;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -31,10 +33,20 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping("/api")
 @Validated
+@EnableConfigurationProperties(value = {ContactDto.class})
 public class LoansController {
 
     @Autowired
     private LoansService loansService;
+
+    @Value("${build.version}")
+    private String buildVersion;
+
+    @Autowired
+    private ContactDto contactDto;
+
+    @Autowired
+    private Environment environment;
 
     @Value("${build.version}")
     private String buildVersion;
@@ -94,7 +106,6 @@ public class LoansController {
                 new ResponseEntity<>(new ResponseDto(LoansConstants.STATUS_417, LoansConstants.MESSAGE_417_DELETE),
                         HttpStatus.EXPECTATION_FAILED);
     }
-
 
     @Operation(summary = "Get Contact Details REST API", description = "REST API to get contact details")
     @ApiResponses({@ApiResponse(responseCode = "200", description = "HTTP Status OK")})
