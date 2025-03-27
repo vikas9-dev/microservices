@@ -1,7 +1,15 @@
+server:
+  port: 8071
+
 spring:
   application:
     name: config-server
 
-server:
-  port: 8071
+  profiles:
+    active: native # classpath
 
+  cloud:
+    config:
+      server:
+        native:
+          search-locations: classpath:/config
