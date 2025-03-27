@@ -4,7 +4,6 @@ server:
 spring:
   application:
     name: configserver # same name should be used in client applications
-    # Name should not have hypens. Example: `config-server` is invalid.
 
   profiles:
     active: native # classpath

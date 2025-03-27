@@ -64,8 +64,8 @@ public class LoansController {
             @ApiResponse(responseCode = "500", description = "Internal Server Error", content = @Content(schema =
             @Schema(implementation = ErrorResponseDto.class)))})
     @GetMapping("/fetch")
-    public ResponseEntity<LoansDto> fetchLoanDetails(@RequestParam @Pattern(regexp = "[0-9]{10}", message =
-            "Mobile " + "Number should be 10 digits") String mobileNumber) {
+    public ResponseEntity<LoansDto> fetchLoanDetails(@RequestParam @Pattern(regexp = "[0-9]{10}", message = "Mobile " +
+            "Number should be 10 digits") String mobileNumber) {
         return ResponseEntity.status(HttpStatus.OK).body(loansService.fetchLoan(mobileNumber));
     }
 
