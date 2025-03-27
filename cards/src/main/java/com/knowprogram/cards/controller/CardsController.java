@@ -14,10 +14,10 @@ import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.Pattern;
-import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
+import org.springframework.core.env.Environment;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
@@ -39,6 +39,9 @@ public class CardsController {
 
     @Autowired
     private ContactDto contactDto;
+
+    @Autowired
+    private Environment environment;
 
     @Operation(summary = "Create Card REST API", description = "REST API to create new Card inside EazyBank")
     @ApiResponses({@ApiResponse(responseCode = "201", description = "HTTP Status CREATED"),
@@ -109,6 +112,13 @@ public class CardsController {
     @GetMapping("/contact-details")
     public ResponseEntity<ContactDto> getContactDetails() {
         return ResponseEntity.ok(contactDto);
+    }
+
+    @Operation(summary = "Get Java Version REST API", description = "REST API to get java version")
+    @ApiResponses({@ApiResponse(responseCode = "200", description = "HTTP Status OK")})
+    @GetMapping("/java-version")
+    public ResponseEntity<String> getJavaVersion() {
+        return ResponseEntity.ok().body(environment.getProperty("JAVA_HOME"));
     }
 
 }
