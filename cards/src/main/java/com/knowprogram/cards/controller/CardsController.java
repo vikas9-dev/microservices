@@ -2,6 +2,7 @@ package com.knowprogram.cards.controller;
 
 import com.knowprogram.cards.constants.CardsConstants;
 import com.knowprogram.cards.dto.CardsDto;
+import com.knowprogram.cards.dto.ContactDto;
 import com.knowprogram.cards.dto.ErrorResponseDto;
 import com.knowprogram.cards.dto.ResponseDto;
 import com.knowprogram.cards.service.ICardsService;
@@ -14,6 +15,9 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.Pattern;
 import lombok.AllArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
@@ -23,11 +27,18 @@ import org.springframework.web.bind.annotation.*;
         "FETCH AND DELETE card details")
 @RestController
 @RequestMapping(path = "/api")
-@AllArgsConstructor
 @Validated
+@EnableConfigurationProperties(value = {ContactDto.class})
 public class CardsController {
 
+    @Autowired
     private ICardsService iCardsService;
+
+    @Value("${build.version}")
+    private String buildVersion;
+
+    @Autowired
+    private ContactDto contactDto;
 
     @Operation(summary = "Create Card REST API", description = "REST API to create new Card inside EazyBank")
     @ApiResponses({@ApiResponse(responseCode = "201", description = "HTTP Status CREATED"),
@@ -84,6 +95,20 @@ public class CardsController {
         } else {
             return ResponseEntity.status(HttpStatus.EXPECTATION_FAILED).body(new ResponseDto(CardsConstants.STATUS_417, CardsConstants.MESSAGE_417_DELETE));
         }
+    }
+
+    @Operation(summary = "Get Contact Details REST API", description = "REST API to get contact details")
+    @ApiResponses({@ApiResponse(responseCode = "200", description = "HTTP Status OK")})
+    @GetMapping("/build-version")
+    public ResponseEntity<String> getBuildVersion() {
+        return ResponseEntity.ok(buildVersion);
+    }
+
+    @Operation(summary = "Get Contact Details REST API", description = "REST API to get contact details")
+    @ApiResponses({@ApiResponse(responseCode = "200", description = "HTTP Status OK")})
+    @GetMapping("/contact-details")
+    public ResponseEntity<ContactDto> getContactDetails() {
+        return ResponseEntity.ok(contactDto);
     }
 
 }
