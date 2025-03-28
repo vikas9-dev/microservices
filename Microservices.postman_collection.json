@@ -1,9 +1,9 @@
 {
 	"info": {
-		"_postman_id": "b13ebba4-778a-4b02-a226-8f2fd402d5d4",
+		"_postman_id": "e5753de7-0019-496d-9cd4-016bb78df650",
 		"name": "Microservices",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-		"_exporter_id": "40559830"
+		"_exporter_id": "21625099"
 	},
 	"item": [
 		{
@@ -585,6 +585,156 @@
 						"description": "This is a GET request and it is used to \"get\" data from an endpoint. There is no request body for a GET request, but you can use query parameters to help specify the resource you want data on (e.g., in this request, we have `id=1`).\n\nA successful GET response will have a `200 OK` status, and should include some kind of response body - for example, HTML web content or JSON data."
 					},
 					"response": []
+				},
+				{
+					"name": "Actuator EndPoints",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/actuator",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"actuator"
+							]
+						},
+						"description": "This is a GET request and it is used to \"get\" data from an endpoint. There is no request body for a GET request, but you can use query parameters to help specify the resource you want data on (e.g., in this request, we have `id=1`).\n\nA successful GET response will have a `200 OK` status, and should include some kind of response body - for example, HTML web content or JSON data."
+					},
+					"response": [
+						{
+							"name": "actuator",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/actuator",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"actuator"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/vnd.spring-boot.actuator.v3+json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 28 Mar 2025 03:16:42 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"_links\": {\n        \"self\": {\n            \"href\": \"http://localhost:8080/actuator\",\n            \"templated\": false\n        },\n        \"beans\": {\n            \"href\": \"http://localhost:8080/actuator/beans\",\n            \"templated\": false\n        },\n        \"caches-cache\": {\n            \"href\": \"http://localhost:8080/actuator/caches/{cache}\",\n            \"templated\": true\n        },\n        \"caches\": {\n            \"href\": \"http://localhost:8080/actuator/caches\",\n            \"templated\": false\n        },\n        \"health-path\": {\n            \"href\": \"http://localhost:8080/actuator/health/{*path}\",\n            \"templated\": true\n        },\n        \"health\": {\n            \"href\": \"http://localhost:8080/actuator/health\",\n            \"templated\": false\n        },\n        \"info\": {\n            \"href\": \"http://localhost:8080/actuator/info\",\n            \"templated\": false\n        },\n        \"conditions\": {\n            \"href\": \"http://localhost:8080/actuator/conditions\",\n            \"templated\": false\n        },\n        \"configprops\": {\n            \"href\": \"http://localhost:8080/actuator/configprops\",\n            \"templated\": false\n        },\n        \"configprops-prefix\": {\n            \"href\": \"http://localhost:8080/actuator/configprops/{prefix}\",\n            \"templated\": true\n        },\n        \"env\": {\n            \"href\": \"http://localhost:8080/actuator/env\",\n            \"templated\": false\n        },\n        \"env-toMatch\": {\n            \"href\": \"http://localhost:8080/actuator/env/{toMatch}\",\n            \"templated\": true\n        },\n        \"loggers\": {\n            \"href\": \"http://localhost:8080/actuator/loggers\",\n            \"templated\": false\n        },\n        \"loggers-name\": {\n            \"href\": \"http://localhost:8080/actuator/loggers/{name}\",\n            \"templated\": true\n        },\n        \"heapdump\": {\n            \"href\": \"http://localhost:8080/actuator/heapdump\",\n            \"templated\": false\n        },\n        \"threaddump\": {\n            \"href\": \"http://localhost:8080/actuator/threaddump\",\n            \"templated\": false\n        },\n        \"metrics\": {\n            \"href\": \"http://localhost:8080/actuator/metrics\",\n            \"templated\": false\n        },\n        \"metrics-requiredMetricName\": {\n            \"href\": \"http://localhost:8080/actuator/metrics/{requiredMetricName}\",\n            \"templated\": true\n        },\n        \"sbom-id\": {\n            \"href\": \"http://localhost:8080/actuator/sbom/{id}\",\n            \"templated\": true\n        },\n        \"sbom\": {\n            \"href\": \"http://localhost:8080/actuator/sbom\",\n            \"templated\": false\n        },\n        \"scheduledtasks\": {\n            \"href\": \"http://localhost:8080/actuator/scheduledtasks\",\n            \"templated\": false\n        },\n        \"mappings\": {\n            \"href\": \"http://localhost:8080/actuator/mappings\",\n            \"templated\": false\n        },\n        \"refresh\": {\n            \"href\": \"http://localhost:8080/actuator/refresh\",\n            \"templated\": false\n        },\n        \"features\": {\n            \"href\": \"http://localhost:8080/actuator/features\",\n            \"templated\": false\n        }\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Actuator Refresh",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/actuator/refresh",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"actuator",
+								"refresh"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Actuator Refresh",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/actuator/refresh",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"actuator",
+										"refresh"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/vnd.spring-boot.actuator.v3+json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 28 Mar 2025 03:18:11 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    \"config.client.version\",\n    \"accounts.message\"\n]"
+						}
+					]
 				}
 			]
 		},
@@ -1801,6 +1951,358 @@
 						"description": "This is a GET request and it is used to \"get\" data from an endpoint. There is no request body for a GET request, but you can use query parameters to help specify the resource you want data on (e.g., in this request, we have `id=1`).\n\nA successful GET response will have a `200 OK` status, and should include some kind of response body - for example, HTML web content or JSON data."
 					},
 					"response": []
+				}
+			]
+		},
+		{
+			"name": "Config Server",
+			"item": [
+				{
+					"name": "Accounts - Default",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{config-server}}/accounts/default",
+							"host": [
+								"{{config-server}}"
+							],
+							"path": [
+								"accounts",
+								"default"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "New Request",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{config-server}}/accounts/default",
+									"host": [
+										"{{config-server}}"
+									],
+									"path": [
+										"accounts",
+										"default"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 28 Mar 2025 02:28:15 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"name\": \"accounts\",\n    \"profiles\": [\n        \"default\"\n    ],\n    \"label\": null,\n    \"version\": \"cae6454b7c4c93193256197382461fc8c808f747\",\n    \"state\": \"\",\n    \"propertySources\": [\n        {\n            \"name\": \"https://github.com/vikas9-dev/peoplebank-config.git/accounts.yml\",\n            \"source\": {\n                \"build.version\": \"3.0\",\n                \"accounts.message\": \"Accounts Microservice - Local\",\n                \"accounts.contactDetails.name\": \"Accounts Microservice - Developer\",\n                \"accounts.contactDetails.email\": \"0V7ZD@example.com\",\n                \"accounts.onCallSupport[0]\": \"(555) 555-5555\",\n                \"accounts.onCallSupport[1]\": \"(555) 555-5556\"\n            }\n        }\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "Accounts - Prod",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{config-server}}/accounts/default",
+							"host": [
+								"{{config-server}}"
+							],
+							"path": [
+								"accounts",
+								"default"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Accounts - Prod - GitHub",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{config-server}}/accounts/prod",
+									"host": [
+										"{{config-server}}"
+									],
+									"path": [
+										"accounts",
+										"prod"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 28 Mar 2025 02:29:20 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"name\": \"accounts\",\n    \"profiles\": [\n        \"prod\"\n    ],\n    \"label\": null,\n    \"version\": \"cae6454b7c4c93193256197382461fc8c808f747\",\n    \"state\": \"\",\n    \"propertySources\": [\n        {\n            \"name\": \"https://github.com/vikas9-dev/peoplebank-config.git/accounts-prod.yml\",\n            \"source\": {\n                \"build.version\": \"1.0\",\n                \"accounts.message\": \"Accounts Microservice - Production\",\n                \"accounts.contactDetails.name\": \"Accounts Microservice - Developer\",\n                \"accounts.contactDetails.email\": \"0V7ZD@example.com\",\n                \"accounts.onCallSupport[0]\": \"(555) 555-5555\",\n                \"accounts.onCallSupport[1]\": \"(555) 555-5556\"\n            }\n        },\n        {\n            \"name\": \"https://github.com/vikas9-dev/peoplebank-config.git/accounts.yml\",\n            \"source\": {\n                \"build.version\": \"3.0\",\n                \"accounts.message\": \"Accounts Microservice - Local\",\n                \"accounts.contactDetails.name\": \"Accounts Microservice - Developer\",\n                \"accounts.contactDetails.email\": \"0V7ZD@example.com\",\n                \"accounts.onCallSupport[0]\": \"(555) 555-5555\",\n                \"accounts.onCallSupport[1]\": \"(555) 555-5556\"\n            }\n        }\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "Accounts - QA",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{config-server}}/accounts/default",
+							"host": [
+								"{{config-server}}"
+							],
+							"path": [
+								"accounts",
+								"default"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Accounts - QA",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{config-server}}/accounts/qa",
+									"host": [
+										"{{config-server}}"
+									],
+									"path": [
+										"accounts",
+										"qa"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 28 Mar 2025 02:28:51 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"name\": \"accounts\",\n    \"profiles\": [\n        \"qa\"\n    ],\n    \"label\": null,\n    \"version\": \"cae6454b7c4c93193256197382461fc8c808f747\",\n    \"state\": \"\",\n    \"propertySources\": [\n        {\n            \"name\": \"https://github.com/vikas9-dev/peoplebank-config.git/accounts-qa.yml\",\n            \"source\": {\n                \"build.version\": \"2.0\",\n                \"accounts.message\": \"Accounts Microservice - QA\",\n                \"accounts.contactDetails.name\": \"Accounts Microservice - Developer\",\n                \"accounts.contactDetails.email\": \"0V7ZD@example.com\",\n                \"accounts.onCallSupport[0]\": \"(555) 555-5555\",\n                \"accounts.onCallSupport[1]\": \"(555) 555-5556\"\n            }\n        },\n        {\n            \"name\": \"https://github.com/vikas9-dev/peoplebank-config.git/accounts.yml\",\n            \"source\": {\n                \"build.version\": \"3.0\",\n                \"accounts.message\": \"Accounts Microservice - Local\",\n                \"accounts.contactDetails.name\": \"Accounts Microservice - Developer\",\n                \"accounts.contactDetails.email\": \"0V7ZD@example.com\",\n                \"accounts.onCallSupport[0]\": \"(555) 555-5555\",\n                \"accounts.onCallSupport[1]\": \"(555) 555-5556\"\n            }\n        }\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "Encrypt",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "0V7ZD@example.com",
+							"options": {
+								"raw": {
+									"language": "text"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{config-server}}/encrypt",
+							"host": [
+								"{{config-server}}"
+							],
+							"path": [
+								"encrypt"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Encrypt",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "0V7ZD@example.com",
+									"options": {
+										"raw": {
+											"language": "text"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{config-server}}/encrypt",
+									"host": [
+										"{{config-server}}"
+									],
+									"path": [
+										"encrypt"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "plain",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain;charset=UTF-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "96"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 28 Mar 2025 02:44:56 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "278fb8eefe1cfdec12cddde47fd474627fc4ace6fb9e546eb229afd3cd739fd90d1485033596d23b9b87673175e0b431"
+						}
+					]
+				},
+				{
+					"name": "Decrypt",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "278fb8eefe1cfdec12cddde47fd474627fc4ace6fb9e546eb229afd3cd739fd90d1485033596d23b9b87673175e0b431",
+							"options": {
+								"raw": {
+									"language": "text"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{config-server}}/decrypt",
+							"host": [
+								"{{config-server}}"
+							],
+							"path": [
+								"decrypt"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Decrypt",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "278fb8eefe1cfdec12cddde47fd474627fc4ace6fb9e546eb229afd3cd739fd90d1485033596d23b9b87673175e0b431",
+									"options": {
+										"raw": {
+											"language": "text"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{config-server}}/decrypt",
+									"host": [
+										"{{config-server}}"
+									],
+									"path": [
+										"decrypt"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "plain",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain;charset=UTF-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "17"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 28 Mar 2025 02:48:13 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "0V7ZD@example.com"
+						}
+					]
 				}
 			]
 		}
