@@ -1,0 +1,47 @@
+server:
+  port: 8071
+
+spring:
+  application:
+    name: configserver # same name should be used in client applications
+    # Name should not have hypens. Example: `config-server` is invalid.
+
+  profiles:
+    # active: native # classpath or filesystem
+    active: git
+
+  cloud:
+    config:
+      server:
+        # native:
+          # search-locations: classpath:/config
+          # search-locations: file:///C:/workspace/microservices/doc/config
+        git:
+          uri: https://github.com/vikas9-dev/peoplebank-config.git
+          default-label: main
+          timeout: 5
+          clone-on-start: true
+          force-pull: true
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: guest
+    password: guest
+
+encrypt:
+  key: BXwrwO4bzJIrAcmD0VzGEe0lPdT2mi4h
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  health:
+    readiness-state:
+      enabled: true
+    liveness-state:
+      enabled: true
+  endpoint:
+    health:
+      probes:
+        enabled: true

@@ -21,6 +21,9 @@ Thumbs.db
 **/.env
 **/*.properties
 
+# Ignore *~ files
+**/*~
+
 # # IntelliJ IDEA
 # .idea/
 # *.iml
