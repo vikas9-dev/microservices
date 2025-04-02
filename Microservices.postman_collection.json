@@ -39,11 +39,12 @@
 							}
 						},
 						"url": {
-							"raw": "{{accounts}}/create",
+							"raw": "{{accounts}}/api/create",
 							"host": [
 								"{{accounts}}"
 							],
 							"path": [
+								"api",
 								"create"
 							]
 						},
@@ -220,11 +221,12 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{accounts}}/fetch?mobileNumber=7488014862",
+							"raw": "{{accounts}}/api/fetch?mobileNumber=7488014862",
 							"host": [
 								"{{accounts}}"
 							],
 							"path": [
+								"api",
 								"fetch"
 							],
 							"query": [
@@ -318,11 +320,12 @@
 							}
 						},
 						"url": {
-							"raw": "{{accounts}}/update",
+							"raw": "{{accounts}}/api/update",
 							"host": [
 								"{{accounts}}"
 							],
 							"path": [
+								"api",
 								"update"
 							]
 						},
@@ -413,11 +416,12 @@
 							}
 						},
 						"url": {
-							"raw": "{{accounts}}/delete?mobileNumber=7488014861",
+							"raw": "{{accounts}}/api/delete?mobileNumber=7488014861",
 							"host": [
 								"{{accounts}}"
 							],
 							"path": [
+								"api",
 								"delete"
 							],
 							"query": [
@@ -510,11 +514,12 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{accounts}}/build-info",
+							"raw": "{{accounts}}/api/build-info",
 							"host": [
 								"{{accounts}}"
 							],
 							"path": [
+								"api",
 								"build-info"
 							]
 						},
@@ -542,11 +547,12 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{accounts}}/contact-info",
+							"raw": "{{accounts}}/api/contact-info",
 							"host": [
 								"{{accounts}}"
 							],
 							"path": [
+								"api",
 								"contact-info"
 							]
 						},
@@ -574,11 +580,12 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{accounts}}/java-version",
+							"raw": "{{accounts}}/api/java-version",
 							"host": [
 								"{{accounts}}"
 							],
 							"path": [
+								"api",
 								"java-version"
 							]
 						},
@@ -606,12 +613,10 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8080/actuator",
-							"protocol": "http",
+							"raw": "{{accounts}}/actuator",
 							"host": [
-								"localhost"
+								"{{accounts}}"
 							],
-							"port": "8080",
 							"path": [
 								"actuator"
 							]
@@ -675,12 +680,10 @@
 						"method": "POST",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8080/actuator/refresh",
-							"protocol": "http",
+							"raw": "{{accounts}}/actuator/refresh",
 							"host": [
-								"localhost"
+								"{{accounts}}"
 							],
-							"port": "8080",
 							"path": [
 								"actuator",
 								"refresh"
@@ -735,6 +738,27 @@
 							"body": "[\n    \"config.client.version\",\n    \"accounts.message\"\n]"
 						}
 					]
+				},
+				{
+					"name": "Bus-refresh",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{accounts}}/actuator/busrefresh",
+							"host": [
+								"{{accounts}}"
+							],
+							"path": [
+								"actuator",
+								"busrefresh"
+							]
+						}
+					},
+					"response": []
 				}
 			]
 		},
@@ -771,11 +795,12 @@
 							}
 						},
 						"url": {
-							"raw": "{{loans}}/create?mobileNumber=7488014862",
+							"raw": "{{loans}}/api/create?mobileNumber=7488014862",
 							"host": [
 								"{{loans}}"
 							],
 							"path": [
+								"api",
 								"create"
 							],
 							"query": [
@@ -868,11 +893,12 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{loans}}/fetch?mobileNumber=7488014862",
+							"raw": "{{loans}}/api/fetch?mobileNumber=7488014862",
 							"host": [
 								"{{loans}}"
 							],
 							"path": [
+								"api",
 								"fetch"
 							],
 							"query": [
@@ -1015,11 +1041,12 @@
 							}
 						},
 						"url": {
-							"raw": "{{loans}}/update?mobileNumber=7488014862",
+							"raw": "{{loans}}/api/update?mobileNumber=7488014862",
 							"host": [
 								"{{loans}}"
 							],
 							"path": [
+								"api",
 								"update"
 							],
 							"query": [
@@ -1122,11 +1149,12 @@
 							}
 						},
 						"url": {
-							"raw": "{{loans}}/delete?mobileNumber=7488014862",
+							"raw": "{{loans}}/api/delete?mobileNumber=7488014862",
 							"host": [
 								"{{loans}}"
 							],
 							"path": [
+								"api",
 								"delete"
 							],
 							"query": [
@@ -1219,11 +1247,12 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{loans}}/build-info",
+							"raw": "{{loans}}/api/build-info",
 							"host": [
 								"{{loans}}"
 							],
 							"path": [
+								"api",
 								"build-info"
 							]
 						},
@@ -1251,11 +1280,12 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{loans}}/contact-info",
+							"raw": "{{loans}}/api/contact-info",
 							"host": [
 								"{{loans}}"
 							],
 							"path": [
+								"api",
 								"contact-info"
 							]
 						},
@@ -1283,11 +1313,12 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{loans}}/java-version",
+							"raw": "{{loans}}/api/java-version",
 							"host": [
 								"{{loans}}"
 							],
 							"path": [
+								"api",
 								"java-version"
 							]
 						},
@@ -1330,11 +1361,12 @@
 							}
 						},
 						"url": {
-							"raw": "{{cards}}/create?mobileNumber=7488014862",
+							"raw": "{{cards}}/api/create?mobileNumber=7488014862",
 							"host": [
 								"{{cards}}"
 							],
 							"path": [
+								"api",
 								"create"
 							],
 							"query": [
@@ -1427,11 +1459,12 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{cards}}/fetch?mobileNumber=7488014862",
+							"raw": "{{cards}}/api/fetch?mobileNumber=7488014862",
 							"host": [
 								"{{cards}}"
 							],
 							"path": [
+								"api",
 								"fetch"
 							],
 							"query": [
@@ -1574,11 +1607,12 @@
 							}
 						},
 						"url": {
-							"raw": "{{cards}}/update",
+							"raw": "{{cards}}/api/update",
 							"host": [
 								"{{cards}}"
 							],
 							"path": [
+								"api",
 								"update"
 							]
 						},
@@ -1721,11 +1755,12 @@
 							}
 						},
 						"url": {
-							"raw": "{{cards}}/delete?mobileNumber=7488014862",
+							"raw": "{{cards}}/api/delete?mobileNumber=7488014862",
 							"host": [
 								"{{cards}}"
 							],
 							"path": [
+								"api",
 								"delete"
 							],
 							"query": [
@@ -1876,11 +1911,12 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{cards}}/build-info",
+							"raw": "{{cards}}/api/build-info",
 							"host": [
 								"{{cards}}"
 							],
 							"path": [
+								"api",
 								"build-info"
 							]
 						},
@@ -1908,11 +1944,12 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{cards}}/contact-info",
+							"raw": "{{cards}}/api/contact-info",
 							"host": [
 								"{{cards}}"
 							],
 							"path": [
+								"api",
 								"contact-info"
 							]
 						},
@@ -1940,11 +1977,12 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{cards}}/java-version",
+							"raw": "{{cards}}/api/java-version",
 							"host": [
 								"{{cards}}"
 							],
 							"path": [
+								"api",
 								"java-version"
 							]
 						},
@@ -2143,6 +2181,199 @@
 							],
 							"cookie": [],
 							"body": "{\n    \"name\": \"accounts\",\n    \"profiles\": [\n        \"qa\"\n    ],\n    \"label\": null,\n    \"version\": \"cae6454b7c4c93193256197382461fc8c808f747\",\n    \"state\": \"\",\n    \"propertySources\": [\n        {\n            \"name\": \"https://github.com/vikas9-dev/peoplebank-config.git/accounts-qa.yml\",\n            \"source\": {\n                \"build.version\": \"2.0\",\n                \"accounts.message\": \"Accounts Microservice - QA\",\n                \"accounts.contactDetails.name\": \"Accounts Microservice - Developer\",\n                \"accounts.contactDetails.email\": \"0V7ZD@example.com\",\n                \"accounts.onCallSupport[0]\": \"(555) 555-5555\",\n                \"accounts.onCallSupport[1]\": \"(555) 555-5556\"\n            }\n        },\n        {\n            \"name\": \"https://github.com/vikas9-dev/peoplebank-config.git/accounts.yml\",\n            \"source\": {\n                \"build.version\": \"3.0\",\n                \"accounts.message\": \"Accounts Microservice - Local\",\n                \"accounts.contactDetails.name\": \"Accounts Microservice - Developer\",\n                \"accounts.contactDetails.email\": \"0V7ZD@example.com\",\n                \"accounts.onCallSupport[0]\": \"(555) 555-5555\",\n                \"accounts.onCallSupport[1]\": \"(555) 555-5556\"\n            }\n        }\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "Health",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{config-server}}/actuator/health",
+							"host": [
+								"{{config-server}}"
+							],
+							"path": [
+								"actuator",
+								"health"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Health",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{config-server}}/actuator/health",
+									"host": [
+										"{{config-server}}"
+									],
+									"path": [
+										"actuator",
+										"health"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/vnd.spring-boot.actuator.v3+json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 31 Mar 2025 17:31:54 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": \"UP\",\n    \"groups\": [\n        \"liveness\",\n        \"readiness\"\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "liveness",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{config-server}}/actuator/health/liveness",
+							"host": [
+								"{{config-server}}"
+							],
+							"path": [
+								"actuator",
+								"health",
+								"liveness"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "liveness",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{config-server}}/actuator/health/liveness",
+									"host": [
+										"{{config-server}}"
+									],
+									"path": [
+										"actuator",
+										"health",
+										"liveness"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/vnd.spring-boot.actuator.v3+json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 31 Mar 2025 17:33:10 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": \"UP\"\n}"
+						}
+					]
+				},
+				{
+					"name": "readiness",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{config-server}}/actuator/health/readiness",
+							"host": [
+								"{{config-server}}"
+							],
+							"path": [
+								"actuator",
+								"health",
+								"readiness"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "readiness",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{config-server}}/actuator/health/readiness",
+									"host": [
+										"{{config-server}}"
+									],
+									"path": [
+										"actuator",
+										"health",
+										"readiness"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/vnd.spring-boot.actuator.v3+json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 31 Mar 2025 17:33:35 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": \"UP\"\n}"
 						}
 					]
 				},

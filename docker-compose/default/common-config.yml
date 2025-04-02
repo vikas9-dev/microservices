@@ -8,7 +8,7 @@ services:
       service: network-deploy-service
     image: mysql
     healthcheck:
-      test: mysqladmin ping -h 127.0.0.1 -P 3307 -u root --password=root
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
       interval: 10s
       timeout: 5s
       retries: 10
@@ -23,8 +23,6 @@ services:
       resources:
         limits:
           memory: 700m
-#    environment:
-#      SPRING_RABBITMQ_HOST: "rabbit"
 
   microservice-configserver-config:
     extends:
