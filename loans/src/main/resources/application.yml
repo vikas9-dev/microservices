@@ -2,30 +2,20 @@ server:
   port: 8090
 spring:
   application:
-    name: loans # same name should be used in config-server application, YML files names.
+    name: loans
   datasource:
-    driver-class-name: org.h2.Driver
-    url: jdbc:h2:mem:testdb
-    username: sa
-    password: ''
-  h2:
-    console:
-      enabled: true
+    url: jdbc:mysql://localhost:3308/loansdb
+    username: root
+    password: root
+  sql:
+    init:
+      mode: always
   jpa:
-    hibernate:
-      ddl-auto: update
     show-sql: true
   profiles:
     active: prod
-  # config server details
   config:
-    # config server url
     import: "optional:configserver:http://localhost:8071/"
-  rabbitmq:
-    host: localhost
-    port: 5672
-    username: guest
-    password: guest
 
 management:
   endpoints:
