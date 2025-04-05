@@ -20,8 +20,36 @@ spring:
   config:
     import: "optional:configserver:http://localhost:8071/"
 
+eureka:
+  instance:
+    preferIpAddress: true
+  client:
+    fetchRegistry: true
+    registerWithEureka: true
+    serviceUrl:
+      defaultZone: http://localhost:8070/eureka/
+
+info:
+  app:
+    name: cards
+    description: PeopleBank Cards Application
+    version: 1.0.0
+
 management:
   endpoints:
     web:
       exposure:
         include: "*"
+  endpoint:
+    health:
+      show-details: always
+    shutdown:
+      enabled: true
+  info:
+    env:
+      enabled: true
+
+# define it at the root level also
+endpoints:
+  shutdown:
+    enabled: true

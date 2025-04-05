@@ -1,5 +1,6 @@
 package com.knowprogram.accounts.mapper;
 
+import com.knowprogram.accounts.dto.CustomerAllDetailsDto;
 import com.knowprogram.accounts.dto.CustomerDTO;
 import com.knowprogram.accounts.entity.Customer;
 
@@ -16,5 +17,12 @@ public class CustomerMapper {
         customer.setEmail(customerDTO.getEmail());
         customer.setMobileNumber(customerDTO.getMobileNumber());
         return customer;
+    }
+
+    public static CustomerAllDetailsDto mapToCustomerAllDetailsDto(Customer customer, CustomerAllDetailsDto customerAllDetailsDto) {
+        customerAllDetailsDto.setName(customer.getName());
+        customerAllDetailsDto.setEmail(customer.getEmail());
+        customerAllDetailsDto.setMobileNumber(customer.getMobileNumber());
+        return customerAllDetailsDto;
     }
 }
