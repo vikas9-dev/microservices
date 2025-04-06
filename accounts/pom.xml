@@ -133,7 +133,7 @@
 				<version>3.4.5</version>
 				<configuration>
 					<to>
-						<image>vikas9dev/${project.artifactId}:s8</image>
+						<image>vikas9dev/${project.artifactId}:s9</image>
 					</to>
 				</configuration>
 			</plugin>
