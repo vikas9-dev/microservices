@@ -39,9 +39,9 @@
 							}
 						},
 						"url": {
-							"raw": "{{accounts}}/api/create",
+							"raw": "{{peoplebank-accounts}}/api/create",
 							"host": [
-								"{{accounts}}"
+								"{{peoplebank-accounts}}"
 							],
 							"path": [
 								"api",
@@ -221,9 +221,9 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{accounts}}/api/fetch?mobileNumber=7488014862",
+							"raw": "{{peoplebank-accounts}}/api/fetch?mobileNumber=7488014862",
 							"host": [
-								"{{accounts}}"
+								"{{peoplebank-accounts}}"
 							],
 							"path": [
 								"api",
@@ -547,9 +547,9 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{accounts}}/api/contact-info",
+							"raw": "{{peoplebank-accounts}}/api/contact-info",
 							"host": [
-								"{{accounts}}"
+								"{{peoplebank-accounts}}"
 							],
 							"path": [
 								"api",
@@ -759,6 +759,111 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "Shutdown",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{accounts}}/actuator/shutdown",
+							"host": [
+								"{{accounts}}"
+							],
+							"path": [
+								"actuator",
+								"shutdown"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "shutdown",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "{{accounts}}/actuator/shutdown",
+									"host": [
+										"{{accounts}}"
+									],
+									"path": [
+										"actuator",
+										"shutdown"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/vnd.spring-boot.actuator.v3+json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 05 Apr 2025 02:56:22 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Shutting down, bye...\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Get Customer All Details",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{peoplebank-accounts}}/api/fetchCustomerDetails?mobileNumber=7488014862",
+							"host": [
+								"{{peoplebank-accounts}}"
+							],
+							"path": [
+								"api",
+								"fetchCustomerDetails"
+							],
+							"query": [
+								{
+									"key": "mobileNumber",
+									"value": "7488014862"
+								}
+							]
+						},
+						"description": "This is a GET request and it is used to \"get\" data from an endpoint. There is no request body for a GET request, but you can use query parameters to help specify the resource you want data on (e.g., in this request, we have `id=1`).\n\nA successful GET response will have a `200 OK` status, and should include some kind of response body - for example, HTML web content or JSON data."
+					},
+					"response": []
 				}
 			]
 		},
@@ -795,9 +900,9 @@
 							}
 						},
 						"url": {
-							"raw": "{{loans}}/api/create?mobileNumber=7488014862",
+							"raw": "{{peoplebank-loans}}/api/create?mobileNumber=7488014862",
 							"host": [
-								"{{loans}}"
+								"{{peoplebank-loans}}"
 							],
 							"path": [
 								"api",
@@ -1325,6 +1430,27 @@
 						"description": "This is a GET request and it is used to \"get\" data from an endpoint. There is no request body for a GET request, but you can use query parameters to help specify the resource you want data on (e.g., in this request, we have `id=1`).\n\nA successful GET response will have a `200 OK` status, and should include some kind of response body - for example, HTML web content or JSON data."
 					},
 					"response": []
+				},
+				{
+					"name": "Shutdown",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{loans}}/actuator/shutdown",
+							"host": [
+								"{{loans}}"
+							],
+							"path": [
+								"actuator",
+								"shutdown"
+							]
+						}
+					},
+					"response": []
 				}
 			]
 		},
@@ -1361,9 +1487,9 @@
 							}
 						},
 						"url": {
-							"raw": "{{cards}}/api/create?mobileNumber=7488014862",
+							"raw": "{{peoplebank-cards}}/api/create?mobileNumber=7488014862",
 							"host": [
-								"{{cards}}"
+								"{{peoplebank-cards}}"
 							],
 							"path": [
 								"api",
@@ -1989,6 +2115,27 @@
 						"description": "This is a GET request and it is used to \"get\" data from an endpoint. There is no request body for a GET request, but you can use query parameters to help specify the resource you want data on (e.g., in this request, we have `id=1`).\n\nA successful GET response will have a `200 OK` status, and should include some kind of response body - for example, HTML web content or JSON data."
 					},
 					"response": []
+				},
+				{
+					"name": "Shutdown",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{cards}}/actuator/shutdown",
+							"host": [
+								"{{cards}}"
+							],
+							"path": [
+								"actuator",
+								"shutdown"
+							]
+						}
+					},
+					"response": []
 				}
 			]
 		},
@@ -2007,6 +2154,69 @@
 							],
 							"path": [
 								"accounts",
+								"default"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "New Request",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{config-server}}/accounts/default",
+									"host": [
+										"{{config-server}}"
+									],
+									"path": [
+										"accounts",
+										"default"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 28 Mar 2025 02:28:15 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"name\": \"accounts\",\n    \"profiles\": [\n        \"default\"\n    ],\n    \"label\": null,\n    \"version\": \"cae6454b7c4c93193256197382461fc8c808f747\",\n    \"state\": \"\",\n    \"propertySources\": [\n        {\n            \"name\": \"https://github.com/vikas9-dev/peoplebank-config.git/accounts.yml\",\n            \"source\": {\n                \"build.version\": \"3.0\",\n                \"accounts.message\": \"Accounts Microservice - Local\",\n                \"accounts.contactDetails.name\": \"Accounts Microservice - Developer\",\n                \"accounts.contactDetails.email\": \"0V7ZD@example.com\",\n                \"accounts.onCallSupport[0]\": \"(555) 555-5555\",\n                \"accounts.onCallSupport[1]\": \"(555) 555-5556\"\n            }\n        }\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "EurekaServer - Default",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{config-server}}/eurekaserver/default",
+							"host": [
+								"{{config-server}}"
+							],
+							"path": [
+								"eurekaserver",
 								"default"
 							]
 						}
@@ -2534,6 +2744,220 @@
 							"body": "0V7ZD@example.com"
 						}
 					]
+				}
+			]
+		},
+		{
+			"name": "Eureka Server",
+			"item": [
+				{
+					"name": "Apps",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{eurekaserver}}/eureka/apps",
+							"host": [
+								"{{eurekaserver}}"
+							],
+							"path": [
+								"eureka",
+								"apps"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "New Request",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{eurekaserver}}/eureka/apps",
+									"host": [
+										"{{eurekaserver}}"
+									],
+									"path": [
+										"eureka",
+										"apps"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Encoding",
+									"value": "gzip"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Content-Length",
+									"value": "688"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 05 Apr 2025 02:42:36 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"applications\": {\n        \"versions__delta\": \"1\",\n        \"apps__hashcode\": \"UP_3_\",\n        \"application\": [\n            {\n                \"name\": \"LOANS\",\n                \"instance\": [\n                    {\n                        \"instanceId\": \"192.168.1.9:loans:8090\",\n                        \"hostName\": \"192.168.1.9\",\n                        \"app\": \"LOANS\",\n                        \"ipAddr\": \"192.168.1.9\",\n                        \"status\": \"UP\",\n                        \"overriddenStatus\": \"UNKNOWN\",\n                        \"port\": {\n                            \"$\": 8090,\n                            \"@enabled\": \"true\"\n                        },\n                        \"securePort\": {\n                            \"$\": 443,\n                            \"@enabled\": \"false\"\n                        },\n                        \"countryId\": 1,\n                        \"dataCenterInfo\": {\n                            \"@class\": \"com.netflix.appinfo.InstanceInfo$DefaultDataCenterInfo\",\n                            \"name\": \"MyOwn\"\n                        },\n                        \"leaseInfo\": {\n                            \"renewalIntervalInSecs\": 30,\n                            \"durationInSecs\": 90,\n                            \"registrationTimestamp\": 1743820479102,\n                            \"lastRenewalTimestamp\": 1743820929380,\n                            \"evictionTimestamp\": 0,\n                            \"serviceUpTimestamp\": 1743820479102\n                        },\n                        \"metadata\": {\n                            \"management.port\": \"8090\"\n                        },\n                        \"homePageUrl\": \"http://192.168.1.9:8090/\",\n                        \"statusPageUrl\": \"http://192.168.1.9:8090/actuator/info\",\n                        \"healthCheckUrl\": \"http://192.168.1.9:8090/actuator/health\",\n                        \"vipAddress\": \"loans\",\n                        \"secureVipAddress\": \"loans\",\n                        \"isCoordinatingDiscoveryServer\": \"false\",\n                        \"lastUpdatedTimestamp\": \"1743820479102\",\n                        \"lastDirtyTimestamp\": \"1743820478996\",\n                        \"actionType\": \"ADDED\"\n                    }\n                ]\n            },\n            {\n                \"name\": \"ACCOUNTS\",\n                \"instance\": [\n                    {\n                        \"instanceId\": \"192.168.1.9:accounts:8080\",\n                        \"hostName\": \"192.168.1.9\",\n                        \"app\": \"ACCOUNTS\",\n                        \"ipAddr\": \"192.168.1.9\",\n                        \"status\": \"UP\",\n                        \"overriddenStatus\": \"UNKNOWN\",\n                        \"port\": {\n                            \"$\": 8080,\n                            \"@enabled\": \"true\"\n                        },\n                        \"securePort\": {\n                            \"$\": 443,\n                            \"@enabled\": \"false\"\n                        },\n                        \"countryId\": 1,\n                        \"dataCenterInfo\": {\n                            \"@class\": \"com.netflix.appinfo.InstanceInfo$DefaultDataCenterInfo\",\n                            \"name\": \"MyOwn\"\n                        },\n                        \"leaseInfo\": {\n                            \"renewalIntervalInSecs\": 30,\n                            \"durationInSecs\": 90,\n                            \"registrationTimestamp\": 1743819804429,\n                            \"lastRenewalTimestamp\": 1743820945505,\n                            \"evictionTimestamp\": 0,\n                            \"serviceUpTimestamp\": 1743819804430\n                        },\n                        \"metadata\": {\n                            \"management.port\": \"8080\"\n                        },\n                        \"homePageUrl\": \"http://192.168.1.9:8080/\",\n                        \"statusPageUrl\": \"http://192.168.1.9:8080/actuator/info\",\n                        \"healthCheckUrl\": \"http://192.168.1.9:8080/actuator/health\",\n                        \"vipAddress\": \"accounts\",\n                        \"secureVipAddress\": \"accounts\",\n                        \"isCoordinatingDiscoveryServer\": \"false\",\n                        \"lastUpdatedTimestamp\": \"1743819804430\",\n                        \"lastDirtyTimestamp\": \"1743819804268\",\n                        \"actionType\": \"ADDED\"\n                    }\n                ]\n            },\n            {\n                \"name\": \"CARDS\",\n                \"instance\": [\n                    {\n                        \"instanceId\": \"192.168.1.9:cards:9000\",\n                        \"hostName\": \"192.168.1.9\",\n                        \"app\": \"CARDS\",\n                        \"ipAddr\": \"192.168.1.9\",\n                        \"status\": \"UP\",\n                        \"overriddenStatus\": \"UNKNOWN\",\n                        \"port\": {\n                            \"$\": 9000,\n                            \"@enabled\": \"true\"\n                        },\n                        \"securePort\": {\n                            \"$\": 443,\n                            \"@enabled\": \"false\"\n                        },\n                        \"countryId\": 1,\n                        \"dataCenterInfo\": {\n                            \"@class\": \"com.netflix.appinfo.InstanceInfo$DefaultDataCenterInfo\",\n                            \"name\": \"MyOwn\"\n                        },\n                        \"leaseInfo\": {\n                            \"renewalIntervalInSecs\": 30,\n                            \"durationInSecs\": 90,\n                            \"registrationTimestamp\": 1743820474306,\n                            \"lastRenewalTimestamp\": 1743820924525,\n                            \"evictionTimestamp\": 0,\n                            \"serviceUpTimestamp\": 1743820474306\n                        },\n                        \"metadata\": {\n                            \"management.port\": \"9000\"\n                        },\n                        \"homePageUrl\": \"http://192.168.1.9:9000/\",\n                        \"statusPageUrl\": \"http://192.168.1.9:9000/actuator/info\",\n                        \"healthCheckUrl\": \"http://192.168.1.9:9000/actuator/health\",\n                        \"vipAddress\": \"cards\",\n                        \"secureVipAddress\": \"cards\",\n                        \"isCoordinatingDiscoveryServer\": \"false\",\n                        \"lastUpdatedTimestamp\": \"1743820474306\",\n                        \"lastDirtyTimestamp\": \"1743820474177\",\n                        \"actionType\": \"ADDED\"\n                    }\n                ]\n            }\n        ]\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Accounts",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{eurekaserver}}/eureka/apps",
+							"host": [
+								"{{eurekaserver}}"
+							],
+							"path": [
+								"eureka",
+								"apps"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Accounts",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{eurekaserver}}/eureka/apps/accounts",
+									"host": [
+										"{{eurekaserver}}"
+									],
+									"path": [
+										"eureka",
+										"apps",
+										"accounts"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Content-Length",
+									"value": "969"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 05 Apr 2025 02:44:58 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"application\": {\n        \"name\": \"ACCOUNTS\",\n        \"instance\": [\n            {\n                \"instanceId\": \"192.168.1.9:accounts:8080\",\n                \"hostName\": \"192.168.1.9\",\n                \"app\": \"ACCOUNTS\",\n                \"ipAddr\": \"192.168.1.9\",\n                \"status\": \"UP\",\n                \"overriddenStatus\": \"UNKNOWN\",\n                \"port\": {\n                    \"$\": 8080,\n                    \"@enabled\": \"true\"\n                },\n                \"securePort\": {\n                    \"$\": 443,\n                    \"@enabled\": \"false\"\n                },\n                \"countryId\": 1,\n                \"dataCenterInfo\": {\n                    \"@class\": \"com.netflix.appinfo.InstanceInfo$DefaultDataCenterInfo\",\n                    \"name\": \"MyOwn\"\n                },\n                \"leaseInfo\": {\n                    \"renewalIntervalInSecs\": 30,\n                    \"durationInSecs\": 90,\n                    \"registrationTimestamp\": 1743819804429,\n                    \"lastRenewalTimestamp\": 1743821185753,\n                    \"evictionTimestamp\": 0,\n                    \"serviceUpTimestamp\": 1743819804430\n                },\n                \"metadata\": {\n                    \"management.port\": \"8080\"\n                },\n                \"homePageUrl\": \"http://192.168.1.9:8080/\",\n                \"statusPageUrl\": \"http://192.168.1.9:8080/actuator/info\",\n                \"healthCheckUrl\": \"http://192.168.1.9:8080/actuator/health\",\n                \"vipAddress\": \"accounts\",\n                \"secureVipAddress\": \"accounts\",\n                \"isCoordinatingDiscoveryServer\": \"false\",\n                \"lastUpdatedTimestamp\": \"1743819804430\",\n                \"lastDirtyTimestamp\": \"1743819804268\",\n                \"actionType\": \"ADDED\"\n            }\n        ]\n    }\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Gateway",
+			"item": [
+				{
+					"name": "Routes",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{gateway}}/actuator/gateway/routes",
+							"host": [
+								"{{gateway}}"
+							],
+							"path": [
+								"actuator",
+								"gateway",
+								"routes"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Circuitbreakers",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{gateway}}/actuator/circuitbreakers",
+							"host": [
+								"{{gateway}}"
+							],
+							"path": [
+								"actuator",
+								"circuitbreakers"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Circuitbreakers Events",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{gateway}}/actuator/circuitbreakerevents?name=accountCircuitBreaker",
+							"host": [
+								"{{gateway}}"
+							],
+							"path": [
+								"actuator",
+								"circuitbreakerevents"
+							],
+							"query": [
+								{
+									"key": "name",
+									"value": "accountCircuitBreaker"
+								}
+							]
+						}
+					},
+					"response": []
 				}
 			]
 		}

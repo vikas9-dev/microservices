@@ -23,6 +23,10 @@ public class GatewayserverApplication {
 						.filters(f -> f
 								.rewritePath("/peoplebank/accounts/(?<segment>.*)", "/${segment}")
 								.addResponseHeader("X-Response-Time", LocalDateTime.now().toString())
+								.circuitBreaker(config -> config
+										.setName("accountCircuitBreaker")
+										.setFallbackUri("forward:/contactSupport")
+								)
 						)
 						.uri("lb://ACCOUNTS"))
 				.route("loans_route", r -> r

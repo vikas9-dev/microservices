@@ -35,3 +35,11 @@ info:
 logging:
   level:
     com.peoplebank.gatewayserver: debug
+
+resilience4j.circuitbreaker:
+  configs:
+    default:
+      slidingWindowSize: 10
+      permittedNumberOfCallsInHalfOpenState: 2
+      failureRateThreshold: 50
+      waitDurationInOpenState: 10000
