@@ -1,4 +1,4 @@
-1. Introduction to Microservices [`master`](https://github.com/vikas9-dev/microservices/tree/master)
+1. Introduction to Microservices [`microservices`](https://github.com/vikas9-dev/microservices/tree/microservices))
 2. Handle Deployment, Portability & Scalability of Microservices using Docker [`docker`](https://github.com/vikas9-dev/microservices/tree/docker)
 3. Spring Profiles [`spring-profiles`](https://github.com/vikas9-dev/microservices/tree/spring-profiles)
 4. Configurations Management in Microservices [`spring-cloud-cfg`](https://github.com/vikas9-dev/microservices/tree/spring-cloud-cfg)
