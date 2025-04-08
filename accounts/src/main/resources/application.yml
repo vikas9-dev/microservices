@@ -19,6 +19,10 @@ spring:
 #    active: prod
   config:
     import: "optional:configserver:http://localhost:8071/"
+  cloud:
+    openfeign:
+      circuitbreaker:
+        enabled: true
 
 management:
   endpoints:
@@ -64,3 +68,15 @@ info:
 logging:
   level:
     com.knowprogram.accounts: DEBUG
+
+resilience4j.retry:
+  instances:
+    getBuildInfo:
+      maxAttempts: 3
+      waitDuration: 500
+      enableExponentialBackoff: true
+      exponentialBackoffMultiplier: 2
+      ignoreExceptions:
+        - java.lang.NullPointerException
+      retryExceptions:
+        - java.util.concurrent.TimeoutException

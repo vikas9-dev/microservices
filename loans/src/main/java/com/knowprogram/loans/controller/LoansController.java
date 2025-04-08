@@ -113,6 +113,8 @@ public class LoansController {
     @ApiResponses({@ApiResponse(responseCode = "200", description = "HTTP Status OK")})
     @GetMapping("/contact-info")
     public ResponseEntity<ContactDto> getContactDetails() {
+        LOGGER.debug("Invoked loans contact-info API");
+        // throw new RuntimeException("Exception in contact-info API");
         return ResponseEntity.ok(contactDto);
     }
 

@@ -12,6 +12,10 @@ spring:
           enabled: false
           # add the below property to accept service name only with lowercase letters
           lowerCaseServiceId: true
+      httpclient:
+        connection-timeout: 1000 # Time to establish connection (in ms)
+        response-timeout: 2s # Max time to wait for a response
+
 
 management:
   endpoints:

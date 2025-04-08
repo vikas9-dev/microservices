@@ -514,9 +514,9 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{accounts}}/api/build-info",
+							"raw": "{{peoplebank-accounts}}/api/build-info",
 							"host": [
-								"{{accounts}}"
+								"{{peoplebank-accounts}}"
 							],
 							"path": [
 								"api",
@@ -859,6 +859,72 @@
 									"key": "mobileNumber",
 									"value": "7488014862"
 								}
+							]
+						},
+						"description": "This is a GET request and it is used to \"get\" data from an endpoint. There is no request body for a GET request, but you can use query parameters to help specify the resource you want data on (e.g., in this request, we have `id=1`).\n\nA successful GET response will have a `200 OK` status, and should include some kind of response body - for example, HTML web content or JSON data."
+					},
+					"response": []
+				},
+				{
+					"name": "CircuitBreaker",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{peoplebank-accounts}}/actuator/circuitbreakers",
+							"host": [
+								"{{peoplebank-accounts}}"
+							],
+							"path": [
+								"actuator",
+								"circuitbreakers"
+							]
+						},
+						"description": "This is a GET request and it is used to \"get\" data from an endpoint. There is no request body for a GET request, but you can use query parameters to help specify the resource you want data on (e.g., in this request, we have `id=1`).\n\nA successful GET response will have a `200 OK` status, and should include some kind of response body - for example, HTML web content or JSON data."
+					},
+					"response": []
+				},
+				{
+					"name": "CircuitBreaker Events",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{peoplebank-accounts}}/actuator/circuitbreakerevents",
+							"host": [
+								"{{peoplebank-accounts}}"
+							],
+							"path": [
+								"actuator",
+								"circuitbreakerevents"
 							]
 						},
 						"description": "This is a GET request and it is used to \"get\" data from an endpoint. There is no request body for a GET request, but you can use query parameters to help specify the resource you want data on (e.g., in this request, we have `id=1`).\n\nA successful GET response will have a `200 OK` status, and should include some kind of response body - for example, HTML web content or JSON data."
@@ -1385,9 +1451,9 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{loans}}/api/contact-info",
+							"raw": "{{peoplebank-loans}}/api/contact-info",
 							"host": [
-								"{{loans}}"
+								"{{peoplebank-loans}}"
 							],
 							"path": [
 								"api",
@@ -2070,9 +2136,9 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{cards}}/api/contact-info",
+							"raw": "{{peoplebank-cards}}/api/contact-info",
 							"host": [
-								"{{cards}}"
+								"{{peoplebank-cards}}"
 							],
 							"path": [
 								"api",

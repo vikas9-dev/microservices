@@ -3,6 +3,7 @@ package com.knowprogram.accounts.controller;
 import com.knowprogram.accounts.constants.AccountConstants;
 import com.knowprogram.accounts.dto.*;
 import com.knowprogram.accounts.service.IAccountService;
+import io.github.resilience4j.retry.annotation.Retry;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
@@ -11,6 +12,7 @@ import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.Pattern;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
@@ -20,12 +22,15 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.concurrent.TimeoutException;
+
 @Tag(name = "CRUD REST APIs for Accounts", description =
         "CRUD REST APIs for Accounts to create, update, delete and " + "fetch account details")
 @RestController
 @RequestMapping("/api")
 @Validated
 @EnableConfigurationProperties(value = {AccountsContactDto1.class})
+@Slf4j
 public class AccountsController {
 
     @Autowired
@@ -91,8 +96,16 @@ public class AccountsController {
     @Operation(summary = "Get Build Version REST API", description = "REST API to get build version")
     @ApiResponses({@ApiResponse(responseCode = "200", description = "HTTP Status 200 - OK")})
     @GetMapping("/build-info")
-    public ResponseEntity<String> getBuildVersion() {
+    @Retry(name = "getBuildInfo", fallbackMethod = "getBuildInfoFallback")
+    public ResponseEntity<String> getBuildVersion() throws TimeoutException {
+        log.debug("Invoked accounts build-info API");
+        // throw new TimeoutException();
         return ResponseEntity.ok().body(buildVersion);
+    }
+
+    public ResponseEntity<String> getBuildInfoFallback(Throwable t) {
+        log.debug("Invoked fallback accounts build-info API");
+        return ResponseEntity.ok().body("1.0.9"); // Fallback Version
     }
 
     @Operation(summary = "Get Java Version REST API", description = "REST API to get java version")
