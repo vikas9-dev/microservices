@@ -5,3 +5,4 @@
 5. Using MySQL in Microservices [`mysql`](https://github.com/vikas9-dev/microservices/tree/mysql)
 6. Service Discovery & Registration in Microservices [`service_discovery`](https://github.com/vikas9-dev/microservices/tree/service_discovery)
 7. API Gateway [`api-gateway`](https://github.com/vikas9-dev/microservices/tree/api-gateway)
+8. Resilient [`resilient`](https://github.com/vikas9-dev/microservices/tree/resilient)
