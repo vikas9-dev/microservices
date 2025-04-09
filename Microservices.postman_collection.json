@@ -580,9 +580,9 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{accounts}}/api/java-version",
+							"raw": "{{peoplebank-accounts}}/api/java-version",
 							"host": [
-								"{{accounts}}"
+								"{{peoplebank-accounts}}"
 							],
 							"path": [
 								"api",

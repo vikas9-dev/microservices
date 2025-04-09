@@ -15,7 +15,12 @@ spring:
       httpclient:
         connection-timeout: 1000 # Time to establish connection (in ms)
         response-timeout: 2s # Max time to wait for a response
-
+  data:
+    redis:
+      connect-timeout: 2s
+      host: localhost
+      port: 6379
+      timeout: 1s
 
 management:
   endpoints:

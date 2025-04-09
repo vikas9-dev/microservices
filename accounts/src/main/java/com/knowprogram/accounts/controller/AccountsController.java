@@ -3,6 +3,7 @@ package com.knowprogram.accounts.controller;
 import com.knowprogram.accounts.constants.AccountConstants;
 import com.knowprogram.accounts.dto.*;
 import com.knowprogram.accounts.service.IAccountService;
+import io.github.resilience4j.ratelimiter.annotation.RateLimiter;
 import io.github.resilience4j.retry.annotation.Retry;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
@@ -111,8 +112,13 @@ public class AccountsController {
     @Operation(summary = "Get Java Version REST API", description = "REST API to get java version")
     @ApiResponses({@ApiResponse(responseCode = "200", description = "HTTP Status 200 - OK")})
     @GetMapping("/java-version")
+    @RateLimiter(name = "getJavaVersion", fallbackMethod = "getJavaVersionFallback")
     public ResponseEntity<String> getJavaVersion() {
         return ResponseEntity.ok().body(env.getProperty("JAVA_HOME"));
+    }
+
+    public ResponseEntity<String> getJavaVersionFallback(Throwable throwable) {
+        return ResponseEntity.ok().body("Java 17");
     }
 
     @Operation(summary = "Get Contact Details REST API", description = "REST API to get contact details")
