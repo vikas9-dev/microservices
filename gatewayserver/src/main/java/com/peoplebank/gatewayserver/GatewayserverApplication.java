@@ -17,7 +17,6 @@ import reactor.core.publisher.Mono;
 
 import java.time.Duration;
 import java.time.LocalDateTime;
-import java.util.concurrent.TimeoutException;
 
 @SpringBootApplication
 public class GatewayserverApplication {
@@ -36,7 +35,7 @@ public class GatewayserverApplication {
 								.addResponseHeader("X-Response-Time", LocalDateTime.now().toString())
 								.circuitBreaker(config -> config
 										.setName("accountCircuitBreaker")
-										// .setFallbackUri("forward:/contactSupport")
+										.setFallbackUri("forward:/contactSupport")
 								)
 						)
 						.uri("lb://ACCOUNTS"))
@@ -76,7 +75,7 @@ public class GatewayserverApplication {
 
 	@Bean
 	RedisRateLimiter redisRateLimiter() {
-		return new RedisRateLimiter(1, 1, 1); // // replenishRate, burstCapacity, requestedTokens
+		return new RedisRateLimiter(1, 1, 1); // replenishRate, burstCapacity, requestedTokens
 	}
 
 }
