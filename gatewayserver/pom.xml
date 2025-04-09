@@ -92,7 +92,7 @@
 				<version>3.4.5</version>
 				<configuration>
 					<to>
-						<image>vikas9dev/${project.artifactId}:s10</image>
+						<image>vikas9dev/${project.artifactId}:s11</image>
 					</to>
 				</configuration>
 			</plugin>

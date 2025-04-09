@@ -14,7 +14,7 @@ spring:
           lowerCaseServiceId: true
       httpclient:
         connection-timeout: 1000 # Time to establish connection (in ms)
-        response-timeout: 2s # Max time to wait for a response
+        response-timeout: 10s # Max time to wait for a response
   data:
     redis:
       connect-timeout: 2s
