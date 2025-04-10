@@ -12,29 +12,29 @@ import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 @SpringBootApplication
 @EnableJpaAuditing(auditorAwareRef = "auditAwareImpl")
 @OpenAPIDefinition(
-		info = @Info(
-				title = "Cards microservice REST API Documentation",
-				description = "Cards microservice REST API Documentation",
-				version = "v1",
-				contact = @Contact(
-						name = "Vaibhav",
-						email = "test@knowprogram.com",
-						url = "https://www.knowprogram.com"
-				),
-				license = @License(
-						name = "Apache 2.0",
-						url = "https://www.knowprogram.com"
-				)
-		),
-		externalDocs = @ExternalDocumentation(
-				description = "Cards microservice REST API Documentation",
-				url = "https://www.knowprogram.com/swagger-ui.html"
-		)
+        info = @Info(
+                title = "Cards microservice REST API Documentation",
+                description = "Cards microservice REST API Documentation",
+                version = "v1",
+                contact = @Contact(
+                        name = "Vaibhav",
+                        email = "test@knowprogram.com",
+                        url = "https://www.knowprogram.com"
+                ),
+                license = @License(
+                        name = "Apache 2.0",
+                        url = "https://www.knowprogram.com"
+                )
+        ),
+        externalDocs = @ExternalDocumentation(
+                description = "Cards microservice REST API Documentation",
+                url = "https://www.knowprogram.com/swagger-ui.html"
+        )
 )
 public class CardsApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(CardsApplication.class, args);
-	}
+    public static void main(String[] args) {
+        SpringApplication.run(CardsApplication.class, args);
+    }
 
 }
