@@ -23,7 +23,7 @@ Thumbs.db
 
 # Ignore *~ files
 **/*~
-
+**/.data
 # # IntelliJ IDEA
 # .idea/
 # *.iml
