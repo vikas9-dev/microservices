@@ -10,7 +10,7 @@ Create a Spring Boot project for accounts Microservice with the following depend
 - Lombok
 - Validation
 
-In IntelliJ IDE go to the settings and enable Annotation processing. You can also install "Codeium" plugin. It is very similar to GitHub copilot, but it is free. Login to the [Codeium](https://codeium.com/). In IDE you can give instruction to it using CTRL + I.
+In IntelliJ IDE go to the settings and enable Annotation processing. You can also install "Windsurf" plugin. It is very similar to GitHub copilot, but it is free. Login to the [Windsurf](https://windsurf.com/). In IDE you can give instruction to it using CTRL + I.
 
 Put the following in the resources folder:-
 
