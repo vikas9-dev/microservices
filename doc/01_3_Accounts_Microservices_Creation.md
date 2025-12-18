@@ -1456,14 +1456,16 @@ We can easily handle all unhandled exceptions using a **generic exception handle
 ```java
 @ExceptionHandler(Exception.class)
 public ResponseEntity<ErrorResponseDto> handleGlobalException(Exception ex, WebRequest request) {
-    ErrorResponseDto errorResponse = new ErrorResponseDto(
-        HttpStatus.INTERNAL_SERVER_ERROR.value(),
-        ex.getMessage(),
-        request.getDescription(false),
-        LocalDateTime.now()
+    return ResponseEntity
+    .status(HttpStatus.INTERNAL_SERVER_ERROR)
+    .body(
+        new ErrorResponseDto(
+            request.getDescription(false), 
+            HttpStatus.INTERNAL_SERVER_ERROR, 
+            ex.getMessage(), 
+            LocalDateTime.now()
+        )
     );
-
-    return new ResponseEntity<>(errorResponse, HttpStatus.INTERNAL_SERVER_ERROR);
 }
 ```
 
@@ -1621,10 +1623,12 @@ Spring Boot does not automatically know how to package validation errors in the 
 
 ```java
 @Override
-protected ResponseEntity<Object> handleMethodArgumentNotValid(MethodArgumentNotValidException ex,
-                                                              HttpHeaders headers,
-                                                              HttpStatusCode status,
-                                                              WebRequest request) {
+protected ResponseEntity<Object> handleMethodArgumentNotValid(
+    MethodArgumentNotValidException ex,
+    HttpHeaders headers,
+    HttpStatusCode status,
+    WebRequest request) {
+        
     Map<String, String> validationErrors = new HashMap<>();
     ex.getBindingResult().getAllErrors().forEach(error -> {
         String fieldName = ((FieldError) error).getField();
@@ -2160,11 +2164,11 @@ With these enhancements, your microservices follow best practices in **REST API 
 
 In the previous lecture, we saw that the same **HTTP status code 500** (Internal Server Error) was used for all `RuntimeException`s inside the `GlobalExceptionHandler` as well as for failures in both update and delete operations. While this works, it can cause confusion for API clients since different failure scenarios share the same error code. 🤔
 
-To fix this and make error handling clearer, I decided to introduce a new status code **417 (Expectation Failed)** specifically for update and delete operation failures, keeping **500** only for unexpected runtime exceptions. Here’s how I improved it behind the scenes:
+To fix this and make error handling clearer, we decided to introduce a new status code **417 (Expectation Failed)** specifically for update and delete operation failures, keeping **500** only for unexpected runtime exceptions.
 
 ### Updating Status Codes in Controller Methods
 
-Instead of sending `500` when update or delete operations fail (indicated by a boolean flag), I now return `417` to better express the nature of these failures:
+Instead of sending `500` when update or delete operations fail (indicated by a boolean flag), we now return `417` to better express the nature of these failures:
 
 ```java
 if (!updateSuccessful) {
