@@ -17,7 +17,7 @@ spring:
           # search-locations: classpath:/config
           # search-locations: file:///C:/workspace/microservices/doc/config
         git:
-          uri: https://github.com/vikas9-dev/peoplebank-config.git
+          uri: https://github.com/vikas9dev/peoplebank-config.git
           default-label: main
           timeout: 5
           clone-on-start: true
